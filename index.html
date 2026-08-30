@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - Campanha Padrão</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="https://calculadorasbko.lovable.app/#menu">Menu</a></li>
+            </ul>
+        </div>  
+    </nav>
+
+    <div class="calculadora-container">
+        <div class="cabecalho">
+            <h4 class="calc-title">Calculadora - Campanha Padrão</h4>
+        </div>
+
+        <div class="input-group">
+            <label for="valorIntegral">Valor Integral do Curso (R$):</label>
+            <input type="text" id="valorIntegral" class="input-field" placeholder="Ex: 1000,00">
+        </div>
+        <div class="input-group">
+            <label for="valorOferta">Valor da Oferta (R$):</label>
+            <input type="text" id="valorOferta" class="input-field" placeholder="Ex: 400,00">
+        </div>
+        
+        <button onclick="calcularPercentuais()">Calcular Bolsas</button>
+        <button onclick="limparTudo()" style="background-color: transparent; border: 1px solid #00bfff; color: #fff; margin-top: 10px;">Limpar Tudo</button>
+        
+        <p id="avisoErro" class="aviso-erro"></p>
+    </div>
+    
+
+    <div id="modalResultado" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 450px;">
+            <span class="close-btn" onclick="fecharModalResultado()">&times;</span>
+            
+            <h3 style="color: #fafafa; margin-bottom: 25px; text-align: center;">Resumo dos Percentuais</h3>
+            
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #fff; font-size: 16px;">
+                <p>Percentual Total Aplicado:</p>
+                <strong style="color: #dbdbdb;"><span id="resultadoTotal">-</span></strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #fff; font-size: 16px;">
+                <p>Bolsa Incondicional:</p>
+                <strong><span id="resultadoIncondicional">-</span></strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px; color: #fff; font-size: 16px;">
+                <p>Bolsa Condicional:</p>
+                <strong><span id="resultadoCondicional">-</span></strong>
+            </div>
+            
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 20px; margin-bottom: 20px;">
+            
+            <div style="display: flex; justify-content: center;">
+                <button onclick="fecharModalResultado()" style="background: transparent; border: 1px solid #00bfff; color: #00bfff; width: 100%;">Fechar Resultado</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Yduqs.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
