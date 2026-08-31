@@ -57,3 +57,17 @@ function limparTudo() {
     document.getElementById('avisoErro').innerText = "";
     fecharModalResultado();
 }
+
+document.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        const modal = document.getElementById('modalResultado');
+        
+        if (modal.style.display === 'flex') {
+            fecharModalResultado();
+        } 
+
+        else {
+            calcularPercentuais();
+        }
+    }
+});
