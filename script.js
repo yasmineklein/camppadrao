@@ -1,13 +1,29 @@
+function formatarValor(valorString) {
+    if (!valorString) return NaN;
+    
+    valorString = valorString.trim();
+
+    if (valorString.includes(',') && valorString.includes('.')) {
+        valorString = valorString.replace(/\./g, '').replace(',', '.');
+    } 
+
+    else if (valorString.includes(',')) {
+        valorString = valorString.replace(',', '.');
+    }
+    
+    return parseFloat(valorString);
+}
+
 function fecharModalResultado() {
     document.getElementById('modalResultado').style.display = 'none';
 }
 
 function calcularPercentuais() {
-    const inputIntegral = document.getElementById('valorIntegral').value.replace(',', '.');
-    const inputOferta = document.getElementById('valorOferta').value.replace(',', '.');
+    const inputIntegral = document.getElementById('valorIntegral').value;
+    const inputOferta = document.getElementById('valorOferta').value;
     
-    const valorIntegral = parseFloat(inputIntegral);
-    const valorOferta = parseFloat(inputOferta);
+    const valorIntegral = formatarValor(inputIntegral);
+    const valorOferta = formatarValor(inputOferta);
     const avisoErro = document.getElementById('avisoErro');
 
     avisoErro.innerText = "";
@@ -43,9 +59,9 @@ function calcularPercentuais() {
     const condicionalDecimal = 1 - ((100 * (1 - descontoTotalDecimal)) / (100 * (1 - incondicionalDecimal)));
     const percentualCondicional = condicionalDecimal * 100;
 
-    document.getElementById('resultadoTotal').innerText = percentualTotal.toFixed(2) + "%";
-    document.getElementById('resultadoIncondicional').innerText = percentualIncondicional.toFixed(2) + "%";
-    document.getElementById('resultadoCondicional').innerText = percentualCondicional.toFixed(2) + "%";
+    document.getElementById('resultadoTotal').innerText = percentualTotal.toFixed(2).replace('.', ',') + "%";
+    document.getElementById('resultadoIncondicional').innerText = percentualIncondicional.toFixed(2).replace('.', ',') + "%";
+    document.getElementById('resultadoCondicional').innerText = percentualCondicional.toFixed(2).replace('.', ',') + "%";
 
     document.getElementById('modalResultado').style.display = 'flex';
 }
@@ -58,16 +74,21 @@ function limparTudo() {
     fecharModalResultado();
 }
 
-document.addEventListener('keypress', function(event) {
+document.addEventListener('keydown', function(event) {
+
+    const modal = document.getElementById('modalResultado');
+    
     if (event.key === 'Enter') {
-        const modal = document.getElementById('modalResultado');
-        
         if (modal.style.display === 'flex') {
             fecharModalResultado();
-        } 
-
-        else {
+        } else {
             calcularPercentuais();
+        }
+    }
+    
+    if (event.key === 'Escape') {
+        if (modal.style.display === 'flex') {
+            fecharModalResultado();
         }
     }
 });
