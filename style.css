@@ -34,7 +34,7 @@ body {
 }
 
 .nav-container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -95,6 +95,46 @@ body {
     font-size: 22px;
     font-weight: 700;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.info-uso {
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.info-uso summary {
+    cursor: pointer;
+    font-weight: 500;
+    outline: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.info-uso summary::before {
+    content: 'ℹ️';
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.info-uso summary::-webkit-details-marker {
+    display: none;
+}
+
+.info-uso p {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
 }
 
 .input-group {
